@@ -1,0 +1,50 @@
+Autonomous robots are operating in hospitals today. Not in pilot programs or isolated research environments — in live clinical and operational settings, performing tasks that previously required human labor. Logistics robots move supplies across wards. Disinfection robots cover floor after floor on overnight schedules. Medication dispensing robots handle controlled substances in pharmacy systems.
+
+The question most hospital technology leaders are asking is whether the robots work. The more important question is whether the institution governing them works.
+
+## The governance gap is not hypothetical
+
+When a logistics robot enters a restricted area, who authorized it to do so? Was that authorization explicit, or was it implicit — inferred from the fact that the robot was deployed and nobody stopped it? If an incident occurs in that restricted area, what is the record of the authorization decision? Who made it? Under what policy? At what time?
+
+In most hospital robot deployments today, these questions do not have clean answers. Authorization is handled at the point of deployment — a robot is configured to access certain spaces and perform certain tasks — and then it operates until something goes wrong or someone changes the configuration. There is no runtime authorization layer. There is no institutional policy enforcement at the action level. There is no audit trail that produces a precise record of what was authorized, when, and why.
+
+This is not a criticism of the robots themselves. It is an observation about the infrastructure layer that governs them — which, in most deployments, does not exist as a distinct system.
+
+## Why it matters now
+
+The governance gap has existed since the first hospital robots were deployed. What has changed is the scale of deployment. A hospital with two or three robots in a contained environment can manage governance informally. A hospital with thirty, fifty, or a hundred robots operating across multiple floors, shifts, and departments cannot.
+
+At scale, informal governance — configuration-based access, tribal knowledge, manual coordination — produces liability exposure. It produces incidents that cannot be investigated precisely because the records do not exist. It produces regulatory risk as healthcare agencies begin to develop frameworks for autonomous systems in clinical environments.
+
+The window to establish governance proactively is narrowing. Regulators who are developing frameworks for autonomous medical devices and autonomous systems in healthcare settings will eventually produce requirements. Insurers who are beginning to underwrite hospital robotics programs will eventually ask for evidence of institutional control. Accreditation bodies will eventually want to see governance documentation.
+
+The hospitals that build governance infrastructure before those requirements arrive are in a structurally different position than those that try to retrofit it.
+
+## What governance infrastructure looks like
+
+A governance layer for autonomous robotic labor is not a compliance dashboard or a monitoring tool. It is infrastructure software — a layer that sits between the hospital's robot fleet and the actions those robots are authorized to take.
+
+In practice, it means:
+
+- Every robot action requires an explicit authorization decision before it executes, evaluated against institutional policy in real time
+- Policies are defined, versioned, and managed as institutional assets — not hardcoded into robot configurations
+- Every authorization decision is logged with full context: which robot, what action, which policy applied, what the decision was, and at what time
+- The resulting audit record is structured, queryable, and available for production to regulators, insurers, or legal counsel when needed
+
+This is the same pattern that identity and access management (IAM) provides for cloud infrastructure, applied to the physical operations of an autonomous robot fleet.
+
+## The organizational imperative
+
+There is an additional dimension to governance that is easy to overlook in the technical framing: accountability.
+
+Governance infrastructure answers the question of who is responsible when an autonomous robot does something that causes harm or raises questions. Without governance, the answer is diffuse — it is the robot manufacturer, or the vendor who deployed it, or the IT team that configured it, or nobody in particular. With governance, the institution has a precise record of the authorization decisions it made and the policies under which it operated.
+
+That precision is not just a legal asset. It is an organizational one. It means that hospital leadership can answer questions from board members, regulators, and the public with confidence, because the record exists.
+
+## The time to build is before the requirement
+
+The most common mistake hospitals make with governance infrastructure is treating it as something to implement after the fleet is at scale. By that point, governance becomes a retrofit — more expensive, more disruptive, and less complete than it would have been if built alongside the initial deployment.
+
+The hospitals that are establishing governance now — while fleets are still manageable, while requirements are still forming, while the institutional memory of how decisions were made still exists — are building a foundation that will support autonomous operations as they scale.
+
+That is the case for governance infrastructure. Not because regulators will eventually require it, though they will. Because the hospital that cannot answer the question "who authorized that?" has already lost a kind of institutional control it should never have given up.

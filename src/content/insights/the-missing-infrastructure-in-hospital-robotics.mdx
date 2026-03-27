@@ -1,0 +1,49 @@
+There is a pattern in the history of enterprise infrastructure: a new capability arrives, organizations adopt it quickly because the operational benefits are clear, and then — usually after an incident — everyone discovers that the infrastructure to govern the capability was never built.
+
+This happened with cloud computing. The ability to provision compute and storage on demand was transformative, and organizations moved fast to take advantage of it. The governance layer — identity and access management, audit logging, policy enforcement — came later, often after a breach or compliance failure made the gap visible. The tools that eventually filled it (IAM systems, CSPM platforms, cloud security postures) are now critical infrastructure. But they were retrofitted, and the retrofit was painful.
+
+The same pattern is playing out now in hospital robotics.
+
+## What is missing
+
+Every hospital that has deployed autonomous robots has, in some form, built an ad hoc version of the missing layer. A configuration file that defines which spaces a robot can access. A vendor dashboard that shows operational status. A set of email addresses to notify if something goes wrong. Informal agreements between the facilities team and the clinical operations team about what robots are permitted to do and when.
+
+This is governance of a kind. But it is not infrastructure.
+
+The difference matters. Infrastructure is a layer that other systems depend on. It enforces policy consistently, without requiring human intervention at the point of execution. It produces records that are structured and durable. It can be audited, queried, and produced on demand. It scales with the fleet rather than growing linearly with manual overhead.
+
+Ad hoc governance does none of these things reliably. It is fragile in proportion to the size of the fleet, the complexity of the operations, and the number of people who need to understand how it works.
+
+## Why organizations skip it
+
+The governance layer gets skipped for the same reason it always gets skipped: it is not where the value is immediately visible.
+
+The value visible in hospital robotics is in the robots — in the tasks they perform, the labor they replace, the operational efficiency they generate. The business case for deployment is clear and measurable. The business case for governance infrastructure is harder to articulate before something goes wrong.
+
+This creates a predictable organizational dynamic. The operations team deploys robots because the efficiency gains are real. The IT team integrates them into existing systems. The compliance team is not consulted until a question arises that nobody can answer. By the time the question arises — from a regulator, an insurer, a legal counsel, a board member asking what the hospital's liability exposure is — the fleet is at scale and the governance problem is large.
+
+> The governance layer gets skipped because it is not where the value is immediately visible. Until the question gets asked that nobody can answer.
+
+## The architecture of the missing layer
+
+What does the missing layer actually need to do?
+
+At its core, it needs to solve three problems that ad hoc governance cannot:
+
+**Authorization at runtime.** A robot should not take an action because it was configured to be capable of taking it. It should take an action because it was explicitly authorized to do so at the moment it requested it. The difference is the difference between static configuration and runtime policy enforcement. Static configuration cannot be updated in real time. It cannot respond to context. It cannot enforce nuanced policy — this robot can access this space, but only during these hours, and only if this condition is met.
+
+**Institutional policy as a managed asset.** The policies that govern robot behavior are institutional decisions. They should be defined, versioned, reviewed, and maintained like any other institutional policy. In most current deployments, they are not. They live in vendor dashboards, in configuration files, in the heads of the people who set up the system. That is not policy management. It is tribal knowledge.
+
+**Durable audit records.** When a question is asked — by a regulator, an insurer, legal counsel, or the hospital's own risk management function — the answer has to come from a record, not from a person's recollection. The record has to be complete, structured, and immutable. It has to say what the robot was authorized to do, what it actually did, and when. In most current deployments, that record does not exist in a form that can be produced on demand.
+
+## The retrofit problem
+
+Organizations that recognize the governance gap and try to address it after deployment face a structural challenge: the information they need to build the governance layer retroactively is partially missing.
+
+Audit records that were never created cannot be recovered. Policy decisions that were made informally cannot be reconstructed precisely. Authorization decisions that were implicit — embedded in configuration rather than evaluated at runtime — cannot be replayed to verify compliance.
+
+The retrofit is always incomplete. The institutions that build governance infrastructure from the beginning have a complete record. The institutions that retrofit it have a partial one.
+
+This is the argument for building the infrastructure layer now, while fleets are still at a size where the implementation is tractable — not after the fleet has scaled, the incidents have accumulated, and the regulatory environment has hardened.
+
+The missing infrastructure in hospital robotics is not exotic or complex. It is the same pattern of governance infrastructure that has been built for every other domain of institutional technology, applied to the domain of autonomous physical operations. The question is whether hospitals build it proactively or inherit it reactively.

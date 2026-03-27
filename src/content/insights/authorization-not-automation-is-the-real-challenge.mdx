@@ -1,0 +1,55 @@
+The narrative around autonomous robots in hospitals is dominated by automation. What can the robots do? How reliably can they do it? What percentage of a logistics workflow can be automated? What categories of clinical support work can be delegated to autonomous systems?
+
+These are reasonable questions. The automation question is real, and the engineering challenge of making autonomous systems reliable in hospital environments is non-trivial. But the more consequential challenge — the one that will determine whether autonomous robotic labor can operate at institutional scale in regulated environments — is authorization.
+
+Not automation. Authorization.
+
+## The distinction
+
+Automation asks: can the robot do this task?
+
+Authorization asks: should this robot be permitted to do this task, right now, under current conditions, given current institutional policy?
+
+The automation question is a capability question. The authorization question is a governance question. And governance questions, in institutional settings, are not solved by engineering alone.
+
+Consider a hospital deploying a medication dispensing robot. The automation question — can the robot reliably handle medications according to a defined workflow — is a product and safety engineering problem. It is hard, and it has to be solved, but it is the kind of problem that has a well-defined answer.
+
+The authorization question is different: should this robot be permitted to dispense this class of medication, to this department, during this shift, under the current clinical policy — and what is the record of that decision?
+
+The authorization question does not have a single answer. It has a policy framework. The policy framework is institutional. It has to be defined, maintained, and enforced by the hospital — not by the robot manufacturer. It changes over time. It has to be applied consistently across the fleet. It has to produce a record.
+
+## Why automation gets more attention
+
+Authorization gets less attention than automation for a structural reason: automation generates the business case, and authorization generates the constraint.
+
+The reason a hospital deploys robots is the efficiency gain — the tasks automated, the labor costs reduced, the throughput increased. Authorization infrastructure does not appear in that return-on-investment analysis. It appears in the risk analysis, and risk analyses are made by different people in a different conversation.
+
+This organizational separation — the operations team driving deployment, the compliance and risk function arriving later — produces the governance gap. By the time the authorization problem is visible, the fleet is deployed and the operational dependency on the robots is established. Retrofitting authorization infrastructure at that point is harder, more expensive, and less complete.
+
+> The reason authorization gets less attention than automation is structural: automation generates the business case, and authorization generates the constraint.
+
+## What makes authorization hard in hospital robotics
+
+Authorization in hospital robotics is harder than authorization in comparable enterprise domains for three reasons.
+
+**Physical consequence.** When a cloud computing resource is incorrectly authorized, the consequence is typically a data exposure or a policy violation. When a robot is incorrectly authorized, the consequence can be physical — a robot in a restricted area where it should not be, an action taken with a patient in circumstances that were not accounted for in the policy. The stakes of incorrect authorization are higher.
+
+**Contextual complexity.** Hospital operations are not static. Policies that govern robot behavior depend on conditions that change constantly — the time of day, the current occupancy of a space, whether a particular patient is present, whether a shift change has occurred, whether a procedure is in progress. An authorization system that evaluates static configuration cannot enforce policy that depends on dynamic context.
+
+**Cross-functional ownership.** In cloud infrastructure, IAM is an IT and security concern with clear ownership. In hospital robotics, the policies that should govern robot behavior are owned by multiple functions: clinical operations, facilities management, compliance, risk management, legal. Getting those functions aligned on policy — and maintaining that alignment as the fleet scales — requires infrastructure that makes policy explicit and auditable, not tribal knowledge embedded in configuration.
+
+## The authorization layer as institutional infrastructure
+
+An authorization layer for hospital robotics is not a product feature. It is infrastructure — software that other systems depend on, that operates without requiring human intervention at the point of execution, that enforces policy consistently and produces records durably.
+
+It evaluates authorization requests in real time, against a policy framework that is managed as an institutional asset. It logs every decision with full context. It produces the audit records that allow the institution to answer questions from regulators, insurers, and its own leadership with precision.
+
+This is not a new concept. Identity and access management infrastructure built for cloud computing does exactly this for digital resources. The same pattern applies to physical autonomous systems — the authorization layer sits between the fleet and the actions it is permitted to take, and it governs that boundary at runtime.
+
+## The practical implication
+
+For hospital technology leaders, the practical implication is this: before a robot takes its first action in a live clinical or operational environment, the institution should be able to answer — with a record, not a recollection — what that robot was authorized to do, under what policy, and who made the decision.
+
+If that record does not exist, the institution has automated a capability it does not fully govern. The automation may work perfectly. The liability exposure exists regardless.
+
+Authorization is not the interesting part of hospital robotics. It is the foundational part — the layer that makes autonomous robotic labor governable, accountable, and safe to scale. The automation follows from the robots. The authorization has to be built by the institution.
