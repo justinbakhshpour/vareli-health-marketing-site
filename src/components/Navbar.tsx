@@ -82,12 +82,12 @@ export default function Navbar() {
             >
               Contact
             </Link>
-            <Link
-              href="/contact"
+            <a
+              href="mailto:justin@varelihealth.com"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-[13px] font-semibold text-white bg-[#0F6674] hover:bg-[#138394] active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2"
             >
               Request a Demo
-            </Link>
+            </a>
           </div>
 
           {/* Mobile toggle */}
@@ -192,13 +192,13 @@ export default function Navbar() {
               Contact
             </Link>
             <div className="pt-3 mt-1 border-t border-zinc-100">
-              <Link
-                href="/contact"
+              <a
+                href="mailto:justin@varelihealth.com"
                 onClick={() => setOpen(false)}
                 className="block w-full text-center px-4 py-3 rounded-lg text-sm font-semibold text-white bg-[#0F6674] hover:bg-[#138394] transition-all duration-150"
               >
                 Request a Demo
-              </Link>
+              </a>
             </div>
           </div>
         </div>

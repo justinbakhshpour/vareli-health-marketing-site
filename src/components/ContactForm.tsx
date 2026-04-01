@@ -86,7 +86,7 @@ export default function ContactForm() {
       setForm(INITIAL);
     } catch {
       setErrorMsg(
-        "Something went wrong. Email us directly at hello@varelihealth.com."
+        "Something went wrong. Email us directly at justin@varelihealth.com."
       );
       setStatus("error");
     }
@@ -109,10 +109,10 @@ export default function ContactForm() {
           Someone from Vareli will respond within one business day. For urgent
           needs, email us directly at{" "}
           <a
-            href="mailto:hello@varelihealth.com"
+            href="mailto:justin@varelihealth.com"
             className="text-[#0F6674] hover:underline"
           >
-            hello@varelihealth.com
+            justin@varelihealth.com
           </a>
           .
         </p>

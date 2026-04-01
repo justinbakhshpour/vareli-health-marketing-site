@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     // Example with Resend:
     // await resend.emails.send({
     //   from: 'noreply@varelihealth.com',
-    //   to: 'hello@varelihealth.com',
+    //   to: 'justin@varelihealth.com',
     //   subject: `Demo request from ${name} at ${organization}`,
     //   text: `Name: ${name}\nTitle: ${title}\nOrganization: ${organization}\nEmail: ${email}\nMessage: ${message}`,
     // });

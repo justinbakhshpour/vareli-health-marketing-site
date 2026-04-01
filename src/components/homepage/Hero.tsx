@@ -188,8 +188,8 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-start gap-3">
-              <Link
-                href="/contact"
+              <a
+                href="mailto:justin@varelihealth.com"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[14px] font-semibold text-white bg-[#0F6674] hover:bg-[#138394] active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
               >
                 Request a Demo
@@ -208,7 +208,7 @@ export default function Hero() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </Link>
+              </a>
               <a
                 href="#why-now"
                 className="inline-flex items-center gap-1 px-5 py-2.5 rounded-lg text-[14px] font-semibold text-zinc-300 hover:text-white hover:bg-white/8 active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"

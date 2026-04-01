@@ -114,8 +114,8 @@ export default async function InsightArticlePage({ params }: Props) {
                   you ours.
                 </p>
               </div>
-              <Link
-                href="/contact"
+              <a
+                href="mailto:justin@varelihealth.com"
                 className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-semibold text-white bg-[#0F6674] hover:bg-[#138394] active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2"
               >
                 Request a Demo
@@ -134,7 +134,7 @@ export default async function InsightArticlePage({ params }: Props) {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

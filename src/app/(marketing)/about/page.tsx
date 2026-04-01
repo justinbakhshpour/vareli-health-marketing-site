@@ -438,8 +438,8 @@ export default function AboutPage() {
                   business day.
                 </p>
                 <div className="flex flex-col sm:flex-row items-start gap-3">
-                  <Link
-                    href="/contact"
+                  <a
+                    href="mailto:justin@varelihealth.com"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[14px] font-semibold text-white bg-[#0F6674] hover:bg-[#138394] active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2"
                   >
                     Request a Demo
@@ -458,12 +458,12 @@ export default function AboutPage() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </Link>
+                  </a>
                   <a
-                    href="mailto:hello@varelihealth.com"
+                    href="mailto:justin@varelihealth.com"
                     className="inline-flex items-center px-5 py-2.5 text-[14px] font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 focus-visible:ring-offset-2"
                   >
-                    hello@varelihealth.com
+                    justin@varelihealth.com
                   </a>
                 </div>
               </div>
@@ -473,7 +473,7 @@ export default function AboutPage() {
                 {[
                   { label: "Response time", value: "Within one business day" },
                   { label: "Session type", value: "Tailored to your environment" },
-                  { label: "Email", value: "hello@varelihealth.com", href: "mailto:hello@varelihealth.com" },
+                  { label: "Email", value: "justin@varelihealth.com", href: "mailto:justin@varelihealth.com" },
                 ].map((item, i, arr) => (
                   <div
                     key={item.label}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const contactInfo = [
-  { label: "Email", value: "hello@varelihealth.com", href: "mailto:hello@varelihealth.com" },
+  { label: "Email", value: "justin@varelihealth.com", href: "mailto:justin@varelihealth.com" },
   { label: "Response time", value: "Within one business day", href: null },
   { label: "Format", value: "Tailored to your environment", href: null },
 ];
@@ -30,15 +30,15 @@ export default function HomeCTA() {
               Tell us about your fleet, your governance posture, and what you are
               trying to solve. We will follow up within one business day.
             </p>
-            <Link
-              href="/contact"
+            <a
+              href="mailto:justin@varelihealth.com"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[14px] font-semibold text-white bg-[#0F6674] hover:bg-[#0D5A68] active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2"
             >
               Request a Demo
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M2.5 7H11.5M11.5 7L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </a>
           </div>
 
           {/* Right: Contact details panel */}

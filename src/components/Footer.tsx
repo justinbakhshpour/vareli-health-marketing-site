@@ -64,10 +64,10 @@ export default function Footer() {
             reserved.
           </p>
           <a
-            href="mailto:hello@varelihealth.com"
+            href="mailto:justin@varelihealth.com"
             className="text-xs text-zinc-400 hover:text-zinc-600 transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] rounded"
           >
-            hello@varelihealth.com
+            justin@varelihealth.com
           </a>
         </div>
       </div>

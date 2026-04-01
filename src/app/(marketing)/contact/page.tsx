@@ -48,8 +48,8 @@ export default function ContactPage() {
                 {[
                   {
                     label: "Email",
-                    value: "hello@varelihealth.com",
-                    href: "mailto:hello@varelihealth.com",
+                    value: "justin@varelihealth.com",
+                    href: "mailto:justin@varelihealth.com",
                   },
                   { label: "Response time", value: "Within one business day", href: null },
                   { label: "Session type", value: "Tailored to your environment", href: null },

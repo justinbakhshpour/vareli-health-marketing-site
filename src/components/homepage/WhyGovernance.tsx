@@ -73,15 +73,15 @@ export default function WhyGovernance() {
           <p className="text-[15px] text-zinc-400 flex-1">
             Vareli makes the answers to these questions systematic — before a regulator asks.
           </p>
-          <Link
-            href="/contact"
+          <a
+            href="mailto:justin@varelihealth.com"
             className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[14px] font-semibold text-white bg-[#0F6674] hover:bg-[#138394] active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
           >
             Request a Demo
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M2.5 7H11.5M11.5 7L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Link>
+          </a>
         </div>
       </div>
     </section>
