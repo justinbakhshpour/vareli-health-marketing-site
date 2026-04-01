@@ -80,14 +80,8 @@ export default function Navbar() {
                   : "text-zinc-500 hover:text-zinc-900"
               }`}
             >
-              Contact
-            </Link>
-            <a
-              href="mailto:justin@varelihealth.com"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-[13px] font-semibold text-white bg-[#0F6674] hover:bg-[#138394] active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2"
-            >
               Request a Demo
-            </a>
+            </Link>
           </div>
 
           {/* Mobile toggle */}
@@ -189,17 +183,8 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="block px-3 py-2.5 text-sm font-medium text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 rounded-md transition-all duration-150"
             >
-              Contact
+              Request a Demo
             </Link>
-            <div className="pt-3 mt-1 border-t border-zinc-100">
-              <a
-                href="mailto:justin@varelihealth.com"
-                onClick={() => setOpen(false)}
-                className="block w-full text-center px-4 py-3 rounded-lg text-sm font-semibold text-white bg-[#0F6674] hover:bg-[#138394] transition-all duration-150"
-              >
-                Request a Demo
-              </a>
-            </div>
           </div>
         </div>
       )}

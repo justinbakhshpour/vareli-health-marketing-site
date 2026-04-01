@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { name, title, organization, email, message } = body;
 
-    // Validate required fields
     if (!name || !organization || !email) {
       return NextResponse.json(
         { error: "Name, organization, and email are required." },
@@ -13,7 +15,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Basic email format check
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
@@ -22,16 +23,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Wire up email delivery (Resend, SendGrid, Postmark, etc.)
-    // Example with Resend:
-    // await resend.emails.send({
-    //   from: 'noreply@varelihealth.com',
-    //   to: 'justin@varelihealth.com',
-    //   subject: `Demo request from ${name} at ${organization}`,
-    //   text: `Name: ${name}\nTitle: ${title}\nOrganization: ${organization}\nEmail: ${email}\nMessage: ${message}`,
-    // });
-
-    console.log("Contact form submission:", { name, title, organization, email, message });
+    await resend.emails.send({
+      from: "Vareli Health <onboarding@resend.dev>",
+      to: "justin@varelihealth.com",
+      subject: `Demo request from ${name} at ${organization}`,
+      text: [
+        `Name: ${name}`,
+        title ? `Title: ${title}` : null,
+        `Organization: ${organization}`,
+        `Email: ${email}`,
+        message ? `\nMessage:\n${message}` : null,
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch {
