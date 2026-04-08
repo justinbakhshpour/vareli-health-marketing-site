@@ -9,6 +9,15 @@ export type InsightMeta = {
 
 export const insights: InsightMeta[] = [
   {
+    slug: "tesla-optimus-3-and-the-governance-gap",
+    title: "Tesla's Optimus 3 Is Coming to Hospitals. The Governance Layer Isn't.",
+    description:
+      "Tesla's production ramp puts Optimus in healthcare settings by 2027–2028. The capability timeline is accelerating. The institutional infrastructure to govern autonomous humanoid robots in clinical environments is not.",
+    date: "2026-04-07",
+    readTime: "6 min read",
+    category: "Governance",
+  },
+  {
     slug: "why-hospitals-need-a-governance-layer",
     title: "Why Hospitals Need a Governance Layer for Autonomous Systems",
     description:
