@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     }
 
     await resend.emails.send({
-      from: "Vareli Health <onboarding@resend.dev>",
+      from: "Vareli Health <noreply@varelihealth.com>",
       to: "justin@varelihealth.com",
       subject: `Demo request from ${name} at ${organization}`,
       text: [
