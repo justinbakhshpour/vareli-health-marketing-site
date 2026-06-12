@@ -9,6 +9,15 @@ export type InsightMeta = {
 
 export const insights: InsightMeta[] = [
   {
+    slug: "the-biggest-barrier-to-hospital-robotics",
+    title: "The Biggest Barrier to Hospital Robotics Isn't the Robot",
+    description:
+      "Autonomous robots are entering hospitals at scale — but the hardest problem isn't navigation or reliability. It's the missing institutional layer that decides what these systems are permitted to do, and who is accountable when something goes wrong.",
+    date: "2026-06-11",
+    readTime: "9 min read",
+    category: "Governance",
+  },
+  {
     slug: "tesla-optimus-3-and-the-governance-gap",
     title: "Tesla's Optimus 3 Is Coming to Hospitals. The Governance Layer Isn't.",
     description:
