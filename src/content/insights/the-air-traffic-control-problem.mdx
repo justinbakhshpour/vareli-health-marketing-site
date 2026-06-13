@@ -1,0 +1,43 @@
+Two conversations this month with operations leaders at separate hospital systems landed on the same image, unprompted, from both of them: air traffic control.
+
+Neither was describing surgical robots or the autonomous future people imagine when they hear "robots in hospitals." They were describing something more mundane and more telling — the moment a building stops having one or two machines moving through it and starts having a fleet. That shift, both of them suggested, is where the current way of doing things quietly breaks.
+
+## The problem isn't the robot. It's the second robot.
+
+When a hospital deploys a single autonomous unit — a supply runner, a linen cart, a medication courier — it manages it the way you'd manage any new piece of equipment. You buy it from a vendor, the vendor's software controls it, and the vendor is on the hook when it fails. One of the leaders made the accountability line explicit: if a floor-care robot damages something, that's the vendor's problem. Clean, contained, obvious.
+
+That model holds right up until the second vendor arrives. And the third. Now you have a transport unit from one company, a delivery unit from another, and a general-purpose humanoid from a third, all sharing the same corridors, the same elevators, the same emergencies — each governed by its own console, its own policies, its own idea of what's allowed. No one is looking at the whole picture. No one *can*, because the picture is split across a handful of vendor dashboards that were never designed to talk to each other.
+
+This is the air traffic control problem. Every plane has a competent pilot. That was never the question. The question is who's watching the sky.
+
+## What operations leaders actually worry about
+
+What struck me across both conversations was how little the anxiety was about the technology itself, and how much it was about the seams *around* it.
+
+One leader kept returning to throughput — the unglamorous discipline of moving patients through a system to the right level of care without anything clogging the pipe. A delayed lab specimen isn't a robotics story; it's a story about a patient waiting and a satisfaction score dropping. Autonomous systems are interesting to operators precisely insofar as they unclog that pipe, and dangerous precisely insofar as they introduce new ways for it to jam.
+
+The other leader, coming from the clinical side, pushed harder on the failure modes. What happens during a code blue, when the hallway fills with people and urgency and a robot is mid-task? Does it know to abort? Does it know to get out of the way? Does it know that *this* corridor is now off-limits and *this* delivery just became the priority? They were emphatic that autonomy in a hospital is only as trustworthy as the guardrails wrapped around it — the human oversight, the emergency overrides, the ability to say *not here, not now, not without approval.* The comparison they reached for was self-driving cars: nobody wants the version without a brake pedal.
+
+Both, in their own vocabulary, were describing the same missing layer. Not a better robot. A system of record for what every robot is allowed to do, where it's allowed to be, and what happened when it acted.
+
+## The boring parts are the load-bearing parts
+
+If there's a single theme that united the two discussions, it's that the hard problems in hospital autonomy are administrative, not mechanical.
+
+**Audit trails.** Healthcare runs on documentation and regulatory accountability. A robot that transports a medication or a specimen and leaves no trace of who authorized it, when it arrived, and whether it completed the task is a compliance liability wearing a friendly face. One leader wanted timestamps on everything — arrival, departure, completion — not because timestamps are exciting, but because in a regulated environment, the thing you didn't log is the thing you can't defend.
+
+**Supply chain and context.** A delivery robot is only useful if it's carrying the right thing. The clinical leader was clear that autonomous delivery is meaningless without integration into inventory and supply systems — the robot needs to know what it has, what the situation needs, and whether those match. Knowing a unit's capabilities and limitations isn't a nice-to-have; it's the difference between help and chaos during an emergency.
+
+**Integration with what already exists.** Roughly forty percent of the EMR market sits with a single vendor, and in healthcare, that gravity is real. New technology doesn't get adopted because it's clever. It gets adopted when it slots into existing workflows, surfaces alerts where staff already look, and demonstrates value the finance team can actually quantify. Efficiency gains that can't be put into numbers don't survive a budget meeting.
+
+## The adoption path is conservative, and that's the realistic part
+
+Neither leader pretended hospitals would leap to a centralized model overnight. The honest prediction was the slow one: hospitals start with vendor-specific controls because that's what comes in the box, IT departments are cautious by temperament and overloaded by default, and the appetite for a unifying layer only really arrives once the fleet is large enough that *not* having one becomes the obvious problem.
+
+That's not a knock on the idea. It's a description of how infrastructure actually gets adopted — after the pain is felt, not before. The systems that win are the ones already built when the second and third vendors show up and someone in operations finally asks the question both of these leaders were circling: *who's watching the sky?*
+
+## What I took away
+
+Two operators, two different vantage points — one focused on flow, one focused on safety — arrived at the same structural gap from opposite directions. Hospitals have spent decades building sophisticated machinery for governing *people*: credentialing, access control, accountability. They have nothing equivalent for autonomous systems, and the moment those systems multiply past one vendor, the absence stops being theoretical.
+
+The robots are coming to handle the menial work, and that's genuinely useful. But the interesting problem — the one operations leaders are already quietly naming — was never going to be the robot. It's the layer above the robot. The tower, not the plane.

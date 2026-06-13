@@ -9,6 +9,15 @@ export type InsightMeta = {
 
 export const insights: InsightMeta[] = [
   {
+    slug: "the-air-traffic-control-problem",
+    title: "The Air Traffic Control Problem Hospitals Don't Know They Have Yet",
+    description:
+      "Two hospital operations leaders, unprompted, reached for the same metaphor: air traffic control. Not to describe a single robot — but the moment a fleet spans multiple vendors and no one is watching the whole sky.",
+    date: "2026-06-12",
+    readTime: "6 min read",
+    category: "Operations",
+  },
+  {
     slug: "the-biggest-barrier-to-hospital-robotics",
     title: "The Biggest Barrier to Hospital Robotics Isn't the Robot",
     description:
