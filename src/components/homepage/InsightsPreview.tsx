@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { insights } from "@/content/insights/index";
+import { insights, insightHref } from "@/content/insights/index";
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", {
@@ -60,7 +60,7 @@ export default function InsightsPreview() {
           {preview.map((article) => (
             <Link
               key={article.slug}
-              href={`/insights/${article.slug}`}
+              href={insightHref(article)}
               className="group flex flex-col bg-white rounded-xl border border-zinc-200 p-6 hover:border-zinc-300 hover:shadow-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2"
             >
               <div className="flex items-center gap-2 mb-5">

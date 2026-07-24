@@ -1,0 +1,187 @@
+import ImagePlaceholder from "@/components/ImagePlaceholder";
+
+Hospitals are past the question of whether robots are coming. Autonomous mobile robots already deliver medications, transport supplies, and clean floors in health systems across the country, and humanoid platforms are moving toward commercial pilots. The question most hospital leaders are actually asking is more practical: how do we deploy a robot without creating a safety, security, or accountability problem we discover after go-live?
+
+This guide walks through the deployment process end to end, from the first vendor conversation to a governed, measurable pilot. It is written for the people who inherit robotics projects in real hospitals: operations, IT and cybersecurity, facilities, clinical engineering, pharmacy, patient safety, nursing, and risk.
+
+## Why hospital robot deployments stall
+
+Most hospitals have mature processes for credentialing people. A new nurse cannot walk in and start administering medications. There is identity verification, scope of practice, unit assignment, and ongoing review.
+
+Almost no hospital has an equivalent process for autonomous systems. In practice, a robot deployment today is managed through a mix of emails, spreadsheets, vendor portals, and committee meetings that were never designed for this. The result is a set of failure modes that show up again and again:
+
+The elevator integration does not work and nobody tested it before go-live. Staff on the affected units were never trained. Nobody owns emergency escalation when the robot fails in a hallway. The robot enters an area it was never supposed to enter. The vendor pushes a software update that changes what the robot can do, and nobody inside the hospital reviews it. Six months later, no one can say who approved the use case in the first place.
+
+None of these are robot problems. They are governance problems. And they are the reason so many hospital robotics projects stall between the demo and the pilot.
+
+## How today's robots are actually trained, and why it changes what hospitals must govern
+
+To understand why governance matters more for robots than for any previous hospital technology, it helps to understand how modern robots learn to do their jobs. The short version: they are trained, not programmed. Their behavior is a learned model, closer to how large language models work than to the deterministic software hospitals are used to validating.
+
+That training happens through a stack of methods, and the industry has been unusually candid about the tradeoffs of each.
+
+**Simulation** provides scale. A single GPU cluster can generate millions of practice episodes overnight at near-zero marginal cost, which is why the [synthetic data market for robotics](https://labelstud.io/learningcenter/where-robot-training-data-comes-from-in-2026/) was valued at roughly $2.5 billion in 2026 and is projected to triple by 2030. Boston Dynamics reportedly runs [simulation workloads equivalent to millions of hours of training in a single day](https://bitrebels.com/technology/humanoid-robots-in-2026-the-biggest-ai-robot-breakthroughs-you-need-to-know/), with learned skills transferring to a physical Atlas in about an hour. NVIDIA reports that adding synthetic motion data from its GR00T pipeline [improved humanoid task success rates by roughly 40 percent](https://kraneshares.com/humanoid-robotics-in-2026-the-race-from-pilot-to-platform/) compared to real-world data alone.
+
+**Teleoperation and human demonstration** provide fidelity. A human operator controls or physically guides the robot through a task, producing exact action data on the robot's own body. It is slow and expensive, but it is the ground truth that anchors everything else.
+
+**Human video** provides diversity. Foundation models like NVIDIA's GR00T are trained on a [mixture of egocentric human videos, real robot trajectories, and simulated data](https://arxiv.org/pdf/2503.14734), borrowing the scaling recipe that worked for language models.
+
+The efficiency debate has largely settled into a consensus: it is not a choice, it is a stack. Simulation wins on volume and safety, but the [sim-to-real gap is real](https://www.technologyreview.com/2026/04/21/1135656/humanoid-data-robot-training-ai-artificial-intelligence/). Simulators never perfectly model friction, elasticity, or the physics of contact, which is why MIT Technology Review named real-world humanoid data collection one of the defining AI trends of 2026, and why robotics companies have concluded that physical deployment data, cumbersome as it is to collect, is where the payoff lies. Diligent Robotics, whose Moxi robots operate in [more than 25 U.S. hospitals](https://www.diligentrobots.com/blog/moxi2-0), makes the point directly: interactive human environments are the hardest to simulate and the most valuable to learn from, and Moxi 2.0 was built on millions of examples captured from its deployed hospital fleet.
+
+Read that last sentence again from a hospital's perspective, because it contains three governance consequences most institutions have not yet absorbed.
+
+**First, your hospital is the training environment.** Deployed fleets run a continuous feedback loop: data collected in your hallways, elevators, and med rooms flows back to the vendor and retrains the model. The robot is not just performing a service in your facility. It is learning from your facility, and the resulting model belongs to the vendor.
+
+**Second, learned behavior drifts.** A robot whose behavior comes from a model that is continuously retrained on fleet data is, by design, not the same robot six months after you approved it. This is a feature for the vendor and an unaddressed liability for the institution. Traditional hospital technology review assumes the thing you validated is the thing that keeps running. That assumption no longer holds.
+
+**Third, the entity controlling the model can change overnight.** In January 2026, Diligent Robotics, the largest hospital robot fleet operator in the country, was [acquired by Serve Robotics](https://www.diligentrobots.com/), a sidewalk delivery company. Hospitals running Moxi woke up with the same robots in their hallways and a different company controlling the software, the roadmap, and the model trained partly on their operational data. Nothing about that transaction required any hospital's approval.
+
+Here is the practical conclusion. A hospital cannot audit a neural network's weights, cannot review the millions of simulated episodes behind a policy update, and cannot control who acquires its vendors. What a hospital can control, completely, is the authorization boundary: what the robot is permitted to do, where, when, and under what conditions, enforced and recorded by the institution itself. When you cannot govern how the system was trained, governing what it is allowed to do is not a nice-to-have. It is the only control surface you actually own.
+
+That is the lens for every step that follows.
+
+## Step 1: Start with a structured deployment request
+
+Before evaluating any robot, define the deployment as an institutional record, not a vendor conversation. At minimum, the request should document:
+
+- The vendor and specific model
+- The exact job the robot will perform
+- The locations where it will operate
+- The staff and workflows it will affect
+- Known risks and required mitigations
+- Costs and expected benefits
+- Required integrations, such as elevators, doors, Wi-Fi, and clinical systems
+- An internal owner accountable for the deployment
+
+That last item matters more than it sounds. A robot with no internal owner is a robot nobody is responsible for when something goes wrong.
+
+## Step 2: Run a readiness review before you commit
+
+A deployment request answers what the robot will do. A readiness review answers whether the hospital is prepared for it. The core domains:
+
+- **IT security.** Network access, device identity, data handling, vendor remote access.
+- **Patient safety.** Interaction with patients and visitors, behavior in clinical areas, infection control.
+- **Facilities.** Physical routes, elevator and door integrations, charging locations, storage.
+- **Staff training.** Who works alongside the robot and what they need to know.
+- **Emergency procedures.** What the robot does during a code, a fire alarm, or an evacuation.
+- **Downtime procedures.** What happens to the workflow when the robot is offline.
+- **Operational workflow.** How the robot's task fits into existing processes rather than around them.
+- **Financial justification.** The measurable value the pilot must demonstrate.
+
+The goal is not to complete every item before talking to vendors. The goal is to know exactly what is done, what is in progress, and what is blocking, so the deployment timeline reflects reality.
+
+<ImagePlaceholder
+  alt="Vareli readiness checklist for a hospital robot deployment, showing the eight review domains — IT security, patient safety, facilities, staff training, emergency procedures, downtime procedures, operational workflow, and financial justification — each marked complete, in progress, or blocking."
+  caption="Readiness checklist: every domain shown as complete, in progress, or blocking, so the deployment timeline reflects reality."
+  src="/images/insights/readiness-checklist.png"
+/>
+
+## Step 3: Route reviews based on what the robot actually does
+
+Not every robot needs every committee. A floor scrubber operating overnight in non-clinical corridors needs a fundamentally lighter review than a medication-delivery robot, which touches pharmacy, nursing, patient safety, IT, facilities, privacy, risk, and operations.
+
+The mistake most hospitals make is reinventing this routing for every project. Someone senior spends weeks figuring out who needs to be in the room. The fix is a repeatable rule: the robot's capabilities and operating areas determine the required reviews. Write that mapping down once and reuse it for every deployment that follows.
+
+## Step 4: Approve a scope, not a robot
+
+This is the single most useful shift in how hospitals handle robotics, and the one that unblocks the most stalled projects.
+
+The decision in front of your committee is not "approve or reject this robot." It is "what exactly is this robot allowed to do, where, when, and under what conditions?" A conditional approval might look like this:
+
+> The floor scrubber may operate overnight on Floor 2. It may not use elevators or move between floors until Facilities signs off on the elevator integration.
+
+The hospital starts capturing value immediately while keeping the robot inside boundaries it has actually reviewed. Risk stays contained. The vendor gets a live deployment. Nobody waits nine months for every integration to be perfect before anything moves.
+
+<ImagePlaceholder
+  alt="Restricted-scope banner in the Vareli Deployments workspace, displaying an active conditional approval: floor scrubber permitted overnight on Floor 2, elevator use blocked pending Facilities sign-off."
+  caption="Conditional approvals surface as active restrictions on the deployment record — not as a line buried in committee minutes."
+  src="/images/insights/restricted-scope-banner.png"
+/>
+
+## Step 5: Turn the approval into an operating rulebook
+
+An approval that lives in meeting minutes is not governance. It is documentation. To govern the robot, the decision needs to become an explicit authorization profile:
+
+- Approved and prohibited capabilities
+- Approved tasks
+- Approved zones and restricted zones
+- Operating hours
+- Situations that require human approval
+- Expected behavior during emergencies
+- Expected behavior during downtime
+- Conditions that trigger re-review
+
+The distinction matters because of what happens next. Robots change. Vendors push software updates, add capabilities, and adjust behavior. A robot approved in January may not be the same robot in June. If the approved scope only exists in a slide deck, nobody notices the drift. If it exists as an explicit profile, a capability change becomes a review trigger instead of a surprise.
+
+<ImagePlaceholder
+  alt="Authorization Profile record in Vareli, listing a hospital robot's approved and prohibited capabilities, approved zones and restricted zones, operating hours, human-approval triggers, and required emergency and downtime behavior."
+  caption="The Authorization Profile: an institution-owned record of what the robot is permitted to do, built to connect to enforcement."
+  src="/images/insights/authorization-profile.png"
+/>
+
+## Step 6: Define pilot success before launch
+
+Hospital leaders consistently say the same thing about robotics pilots: they need measurable operational and financial value, not an interesting technology demonstration. Define the metrics before the robot arrives:
+
+- Task-completion rate
+- Downtime and mean time to recovery
+- Human interventions required per shift
+- Staff hours saved
+- Safety incidents and near misses
+- Cost per completed task
+- Staff satisfaction on affected units
+- Vendor response time to issues
+
+A pilot with predefined metrics produces a decision. A pilot without them produces a debate.
+
+## Step 7: Manage the robot as a lifecycle, not an event
+
+Deployment is not the finish line. Over the life of the robot, the same institutional record should track incidents and how they were resolved, software updates and what they changed, new capabilities and whether they were reviewed, expansion into new units or facilities, reauthorization on a defined cadence, and eventually suspension or retirement.
+
+Health systems that get this right gain a compounding advantage: a successful pilot at one facility becomes a reviewed, adaptable template for the next one, instead of every hospital starting from scratch.
+
+## A hospital robot deployment checklist
+
+For teams starting this process, the short version:
+
+1. Document the deployment as a structured request with a named internal owner
+2. Run a readiness review across IT security, patient safety, facilities, training, emergency and downtime procedures, workflow, and financials
+3. Route reviews based on the robot's capabilities and operating areas
+4. Approve a specific operating scope with explicit conditions, not a blanket yes or no
+5. Convert the approval into an authorization profile the organization can enforce and audit
+6. Define pilot success metrics before launch
+7. Treat updates, new capabilities, and incidents as review triggers for the life of the robot
+
+## Frequently asked questions
+
+### Who should own robot deployments inside a hospital?
+
+There is no single right answer, but there must be an answer. Common owners include operations, clinical engineering, or an innovation office, with IT, facilities, and patient safety as standing reviewers. What fails is distributed ownership where the vendor is the only party with a complete picture.
+
+### Does governance slow down robotics adoption?
+
+Disorganized governance does. A structured process is usually faster than the alternative, because every deployment stops being a bespoke project. Teams know what is required, who must approve, and what is blocking. Conditional approvals in particular let pilots start sooner, not later.
+
+### What about the vendor's own dashboard and controls?
+
+Vendor tools are necessary and useful. They tell you where the robot is, whether it is online, and whether it completed its task. What they cannot tell you is whether the robot should have been deployed, who inside your institution approved it, what conditions apply, and whether it is operating within your policies. Every vendor also answers those questions differently, which means a hospital running three vendors has three incompatible versions of the truth. The vendor manages its robot. The institution has to manage its relationship with every robot.
+
+### Does this apply to humanoid robots?
+
+Yes, and it will matter more. Today's AMRs perform narrow, fixed tasks, which keeps the authorization question relatively simple. General-purpose and humanoid platforms will be capable of far more than any hospital will initially permit, which makes the gap between what a robot can do and what it is allowed to do the central governance question.
+
+### If robots learn continuously, how can a hospital ever approve one?
+
+By approving a scope instead of a snapshot. You cannot freeze a learned model, but you can define the boundary it must operate within and treat any capability change as a review trigger. The approval attaches to what the robot is allowed to do, not to a specific software version, which is exactly why the authorization profile in Step 5 has to exist as an enforceable record rather than a committee memo.
+
+## Where Vareli fits
+
+Everything in this guide can, in principle, be done with spreadsheets, committee charters, and discipline. In practice, almost no hospital does it, because the process spans eight departments, outlives every individual project, and has to survive vendor updates, vendor acquisitions, and staff turnover. That is not a documentation problem. It is an infrastructure gap, and it is [the gap Vareli Health exists to close](/about).
+
+Vareli's Deployments workspace is this entire guide, running as software. Structured intake with a named owner. A live readiness checklist that shows exactly what is blocking. Review routing driven by what the robot will actually do. Conditional approvals like the Floor 2 scrubber example, displayed as active restrictions rather than buried in minutes. And the piece nothing else on the market does: every approval becomes an Authorization Profile, an institution-owned record of approved capabilities, zones, hours, human-oversight requirements, and emergency behavior that is built to connect to enforcement, so decisions govern what robots actually do rather than what a binder says they should.
+
+The training reality above is why [this layer cannot come from a robot vendor](/insights/why-hospitals-need-a-governance-layer). The system being governed cannot govern itself, no vendor will ever span a rival's fleet, and as the Diligent acquisition showed, the vendor holding your permissions today may be a different company tomorrow. The authorization layer has to sit above the fleet and belong to the institution. That is the product.
+
+Here is our honest advice: whether or not you ever talk to us, do not sign your next robotics contract without an institutional answer to who approved this, what exactly is it allowed to do, and what happens when it changes. If you would rather not build that answer from scratch, we are [working with a small number of health systems as design partners](/contact) right now, shaping Deployments around real pilots before general availability. Design partners get the platform early, direct input on the roadmap, and a governance framework in place before the humanoid wave makes it urgent. The window for that level of influence closes when we open up broadly.
+
+If your organization is evaluating robotics this year, talk to us before you deploy, not after the first incident.

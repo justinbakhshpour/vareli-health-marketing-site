@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { insights } from "@/content/insights/index";
+import { insights, insightHref } from "@/content/insights/index";
 
 export const metadata: Metadata = {
   title: "Insights",
@@ -24,6 +24,7 @@ function formatDate(dateStr: string) {
 
 const categoryColor: Record<string, string> = {
   Governance: "bg-[#0F6674]/8 text-[#0F6674]",
+  Deployment: "bg-[#0F6674]/8 text-[#0F6674]",
   Infrastructure: "bg-zinc-100 text-zinc-600",
   Authorization: "bg-zinc-900/8 text-zinc-700",
 };
@@ -69,7 +70,7 @@ export default function InsightsPage() {
           {featured && (
             <div className="mb-6">
               <Link
-                href={`/insights/${featured.slug}`}
+                href={insightHref(featured)}
                 className="group block rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 hover:border-[#0F6674]/30 hover:shadow-[0_4px_32px_-4px_rgba(15,102,116,0.08)] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2"
               >
                 <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -129,7 +130,7 @@ export default function InsightsPage() {
                 {rest.map((article) => (
                   <Link
                     key={article.slug}
-                    href={`/insights/${article.slug}`}
+                    href={insightHref(article)}
                     className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-7 hover:border-zinc-300 hover:shadow-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F6674] focus-visible:ring-offset-2"
                   >
                     <div className="flex items-center gap-3 mb-5">

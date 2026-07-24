@@ -53,14 +53,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     strong: ({ children }) => (
       <strong className="font-semibold text-zinc-900">{children}</strong>
     ),
-    a: ({ href, children }) => (
-      <a
-        href={href}
-        className="text-[#0F6674] hover:underline underline-offset-2 font-medium"
-      >
-        {children}
-      </a>
-    ),
+    a: ({ href, children }) => {
+      // Citations point off-site: open in a new tab and sever the opener link.
+      const isExternal = /^https?:\/\//.test(href ?? "");
+      return (
+        <a
+          href={href}
+          className="text-[#0F6674] hover:underline underline-offset-2 font-medium"
+          {...(isExternal && {
+            target: "_blank",
+            rel: "noopener noreferrer",
+          })}
+        >
+          {children}
+        </a>
+      );
+    },
     hr: () => (
       <hr className="my-10 border-zinc-200" />
     ),

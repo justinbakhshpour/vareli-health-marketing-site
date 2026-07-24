@@ -8,7 +8,11 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return insights.map((article) => ({ slug: article.slug }));
+  // Articles with a top-level `href` are rendered by their own route — excluding
+  // them here keeps a single canonical URL per article.
+  return insights
+    .filter((article) => !article.href)
+    .map((article) => ({ slug: article.slug }));
 }
 
 export const dynamicParams = false;

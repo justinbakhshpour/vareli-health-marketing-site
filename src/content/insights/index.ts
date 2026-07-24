@@ -5,9 +5,31 @@ export type InsightMeta = {
   date: string;
   readTime: string;
   category: string;
+  /**
+   * Overrides the default `/insights/<slug>` URL for articles that live at a
+   * top-level route (SEO landing pages). Articles with an `href` are rendered
+   * by their own page and are excluded from the /insights/[slug] route.
+   */
+  href?: string;
 };
 
+/** Canonical site URL for an article, honouring any top-level `href` override. */
+export function insightHref(article: InsightMeta): string {
+  return article.href ?? `/insights/${article.slug}`;
+}
+
 export const insights: InsightMeta[] = [
+  {
+    slug: "how-to-deploy-robots-in-hospitals",
+    href: "/how-to-deploy-robots-in-hospitals",
+    title:
+      "How to Deploy Robots in Hospitals: A Step-by-Step Governance Guide",
+    description:
+      "A step-by-step guide to deploying robots in hospitals, from intake and readiness review to conditional approval, authorization, and pilot measurement.",
+    date: "2026-07-23",
+    readTime: "11 min read",
+    category: "Deployment",
+  },
   {
     slug: "the-air-traffic-control-problem",
     title: "The Air Traffic Control Problem Hospitals Don't Know They Have Yet",
