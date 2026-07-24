@@ -1,5 +1,3 @@
-import ImagePlaceholder from "@/components/ImagePlaceholder";
-
 Hospitals are past the question of whether robots are coming. Autonomous mobile robots already deliver medications, transport supplies, and clean floors in health systems across the country, and humanoid platforms are moving toward commercial pilots. The question most hospital leaders are actually asking is more practical: how do we deploy a robot without creating a safety, security, or accountability problem we discover after go-live?
 
 This guide walks through the deployment process end to end, from the first vendor conversation to a governed, measurable pilot. It is written for the people who inherit robotics projects in real hospitals: operations, IT and cybersecurity, facilities, clinical engineering, pharmacy, patient safety, nursing, and risk.
@@ -70,12 +68,6 @@ A deployment request answers what the robot will do. A readiness review answers 
 
 The goal is not to complete every item before talking to vendors. The goal is to know exactly what is done, what is in progress, and what is blocking, so the deployment timeline reflects reality.
 
-<ImagePlaceholder
-  alt="Vareli readiness checklist for a hospital robot deployment, showing the eight review domains — IT security, patient safety, facilities, staff training, emergency procedures, downtime procedures, operational workflow, and financial justification — each marked complete, in progress, or blocking."
-  caption="Readiness checklist: every domain shown as complete, in progress, or blocking, so the deployment timeline reflects reality."
-  src="/images/insights/readiness-checklist.png"
-/>
-
 ## Step 3: Route reviews based on what the robot actually does
 
 Not every robot needs every committee. A floor scrubber operating overnight in non-clinical corridors needs a fundamentally lighter review than a medication-delivery robot, which touches pharmacy, nursing, patient safety, IT, facilities, privacy, risk, and operations.
@@ -92,12 +84,6 @@ The decision in front of your committee is not "approve or reject this robot." I
 
 The hospital starts capturing value immediately while keeping the robot inside boundaries it has actually reviewed. Risk stays contained. The vendor gets a live deployment. Nobody waits nine months for every integration to be perfect before anything moves.
 
-<ImagePlaceholder
-  alt="Restricted-scope banner in the Vareli Deployments workspace, displaying an active conditional approval: floor scrubber permitted overnight on Floor 2, elevator use blocked pending Facilities sign-off."
-  caption="Conditional approvals surface as active restrictions on the deployment record — not as a line buried in committee minutes."
-  src="/images/insights/restricted-scope-banner.png"
-/>
-
 ## Step 5: Turn the approval into an operating rulebook
 
 An approval that lives in meeting minutes is not governance. It is documentation. To govern the robot, the decision needs to become an explicit authorization profile:
@@ -112,12 +98,6 @@ An approval that lives in meeting minutes is not governance. It is documentation
 - Conditions that trigger re-review
 
 The distinction matters because of what happens next. Robots change. Vendors push software updates, add capabilities, and adjust behavior. A robot approved in January may not be the same robot in June. If the approved scope only exists in a slide deck, nobody notices the drift. If it exists as an explicit profile, a capability change becomes a review trigger instead of a surprise.
-
-<ImagePlaceholder
-  alt="Authorization Profile record in Vareli, listing a hospital robot's approved and prohibited capabilities, approved zones and restricted zones, operating hours, human-approval triggers, and required emergency and downtime behavior."
-  caption="The Authorization Profile: an institution-owned record of what the robot is permitted to do, built to connect to enforcement."
-  src="/images/insights/authorization-profile.png"
-/>
 
 ## Step 6: Define pilot success before launch
 
