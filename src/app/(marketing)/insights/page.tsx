@@ -15,7 +15,9 @@ export const metadata: Metadata = {
 };
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+  // Parse as local midnight — a bare "YYYY-MM-DD" is read as UTC and would
+  // display the previous day in western timezones, contradicting datePublished.
+  return new Date(`${dateStr}T00:00:00`).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -25,6 +27,7 @@ function formatDate(dateStr: string) {
 const categoryColor: Record<string, string> = {
   Governance: "bg-[#0F6674]/8 text-[#0F6674]",
   Deployment: "bg-[#0F6674]/8 text-[#0F6674]",
+  Standards: "bg-zinc-900/8 text-zinc-700",
   Infrastructure: "bg-zinc-100 text-zinc-600",
   Authorization: "bg-zinc-900/8 text-zinc-700",
 };

@@ -27,3 +27,44 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── MDX <Checklist> markers ───────────────────────────────────────────
+   The global `li` override in mdx-components.tsx lays each item out as a
+   flex row led by an empty span holding a small teal dot. Flex layout also
+   suppresses the native marker, so ordered lists lose their numbers.
+
+   Inside a <Checklist> we repurpose that same span — as a checkbox by
+   default, or as a counter when `ordered`. Scoped to the data attribute so
+   no other article's lists are affected. */
+[data-checklist] li > span:first-child {
+  margin-top: 0.45em;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #0F6674;
+  border-radius: 3px;
+  background: none;
+}
+
+[data-checklist="ordered"] ol {
+  counter-reset: checklist-item;
+}
+
+[data-checklist="ordered"] ol > li {
+  counter-increment: checklist-item;
+}
+
+[data-checklist="ordered"] li > span:first-child {
+  margin-top: 0;
+  width: auto;
+  min-width: 1.6em;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  color: #0F6674;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-checklist="ordered"] li > span:first-child::before {
+  content: counter(checklist-item) ".";
+}

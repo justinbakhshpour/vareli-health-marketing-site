@@ -1,0 +1,424 @@
+<Callout variant="warning" title="Draft status, as of July 28, 2026">
+
+Neither document discussed here is a published international standard. ISO 25268 is a Draft International Standard in the enquiry phase with ISO member bodies, with the ballot opened on May 15, 2026 for a twelve week period. ISO 26253 is a Committee Draft, registered on May 13, 2026, with a comment period that closed on July 10, 2026 and work continuing in the committee. Both sit under ISO/TC 304, Healthcare organization management. Nothing in this article should be read as a current compliance obligation.
+
+</Callout>
+
+<AnswerBox>
+
+ISO 25268 and ISO 26253 are two developing international guidelines for autonomous mobile robots used in hospital pharmaceutical logistics. ISO 25268 addresses the physical delivery service itself, including medication packaging, delivery chambers, emergency halt methods, elevator entry and exit sequences, and delivery locations. ISO 26253 addresses the centralized control system that operates the robots, including real time monitoring, response to unexpected failures, hardware operation management, communication targets, scheduling, task allocation, and recordkeeping.
+
+Neither document is a final published standard. Together, though, they point in a clear direction. Safe hospital robotics will require more than reliable navigation. It will require documented operating processes, centralized visibility across the fleet, defined failure procedures, accountable task management, and durable institutional records.
+
+</AnswerBox>
+
+<Callout title="What this article covers">
+
+- [Autonomous mobile robots in hospital pharmacy operations](#1-autonomous-mobile-robots-in-hospital-pharmacy-operations)
+- [What is ISO 25268?](#2-what-is-iso-25268)
+- [What is ISO 26253?](#3-what-is-iso-26253)
+- [ISO 25268 versus ISO 26253](#4-iso-25268-versus-iso-26253)
+- [Why hospital operations leaders should care now](#5-why-hospital-operations-leaders-should-care-now)
+- [What the drafts could mean for a real deployment](#6-what-the-drafts-could-mean-for-a-real-deployment)
+- [What the standards do not clearly answer yet](#7-what-the-standards-do-not-clearly-answer-yet)
+- [A hospital readiness checklist](#8-a-hospital-readiness-checklist)
+- [Questions to ask robotics vendors](#9-questions-to-ask-robotics-vendors)
+- [What hospitals should do now](#10-what-hospitals-should-do-now)
+- [Frequently asked questions](#frequently-asked-questions)
+
+</Callout>
+
+## 1. Autonomous mobile robots in hospital pharmacy operations
+
+Start with the thing hospital people already know. An autonomous mobile robot, or AMR, is a mobile platform that navigates without a fixed track and without a human driver. In pharmacy operations, hospital pharmacy delivery robots are typically asked to carry:
+
+- Medications from the central pharmacy to nursing units
+- Refill bins for automated dispensing cabinets
+- Controlled or high value pharmaceuticals
+- Urgent and stat medication requests
+- General pharmacy supplies
+- Lab specimens and other materials in adjacent use cases
+
+None of that is unusual work. What makes it hard is the building. A warehouse is designed around the robot. A hospital is not, and it never will be.
+
+The differences that matter operationally:
+
+- Elevators and automatic doors sit in the middle of nearly every route
+- Corridors are shared with patients, visitors, carts, beds, and staff
+- Certain departments are secure and access controlled
+- Deliveries are time sensitive, and some are clinically urgent
+- Medications carry chain of custody expectations
+- Emergencies can reprioritize the entire floor in seconds
+- The rules change by unit, by floor, by shift, and by medication type
+
+That last point is the one that tends to get underestimated. A robot that behaves correctly on a medical surgical floor at two in the afternoon may be behaving incorrectly in behavioral health at two in the morning, and nothing about the robot changed. The context changed.
+
+This is the environment both ISO drafts are trying to describe.
+
+## 2. What is ISO 25268?
+
+The full designation is **ISO/DIS 25268, Guidelines for hospital internal logistics services using autonomous mobile robots for the delivery of pharmaceuticals**.
+
+Translated into operational language: ISO 25268 is primarily about whether the physical medication delivery service is designed and operated safely and reliably.
+
+Based on the abstract ISO has made public, the document is written for healthcare organization management, healthcare suppliers, and AMR manufacturers implementing internal hospital logistics with mobile robots. It addresses the key components needed for safe and reliable pharmaceutical logistics inside the building, including the physical arrangement of the robot itself, medication packaging, delivery chambers, emergency halt methods, and the hospital logistics environment such as elevator entry and exit sequences and the locations where deliveries occur. The current draft edition runs 25 pages.
+
+#### The operational questions this raises
+
+The abstract is short. The questions it creates for an operator are not:
+
+- How is medication secured inside the robot while it is in transit?
+- Who is authorized to open the delivery compartment, and how is that authorization verified?
+- How is the correct payload matched to the correct destination?
+- What happens when a delivery cannot be completed?
+- Can the robot enter every floor and every department, or only some?
+- How does it request, enter, and exit an elevator?
+- What happens when that elevator is occupied by a patient bed or a responding team?
+- Where does the robot wait when it is idle, without blocking traffic or a fire door?
+- How does a staff member who has never been trained safely stop it?
+- What happens to the medication after an emergency stop?
+- Who verifies that handoff actually occurred?
+
+A hospital that can answer those eleven questions is further along than a hospital that has read the draft.
+
+## 3. What is ISO 26253?
+
+The full designation is **ISO/CD 26253, Healthcare organization management, Smart hospitals, Guidelines for establishing a centralized control system for hospital's internal pharmaceutical logistics using autonomous mobile robots**.
+
+Translated: ISO 26253 is primarily about the central control and operational management infrastructure surrounding the robots.
+
+The public abstract frames the document around establishing and operating a centralized control system, referred to as a CCS, required for AMR operation. The roles it identifies for that system include response procedures for unexpected functional failures, real time monitoring information, hardware operation management, communication targets, schedule management and task allocation, and recordkeeping.
+
+Read that list again with a fleet in mind rather than a robot. Every item on it is an institutional function, not a device function.
+
+#### The operational questions this raises
+
+- Who can see every robot's location and current assignment at once?
+- Who decides which robot receives an urgent task?
+- How are routine deliveries reprioritized during a code or a mass casualty event?
+- What happens when a robot loses connectivity mid route?
+- How does the control system detect a hardware failure rather than waiting to be told?
+- Who receives that alert at three in the morning?
+- Can the hospital pause one robot, one unit, one floor, or the entire fleet?
+- What records are retained for each delivery, and for how long?
+- Can the hospital reconstruct what happened during an incident, without the vendor's help?
+- Who owns those records, the hospital or the robotics vendor?
+- Can a single centralized control system manage robots from more than one manufacturer?
+
+That last question is the one worth flagging. The public abstract does not answer it, and hospitals planning a second fleet should not assume the answer.
+
+## 4. ISO 25268 versus ISO 26253
+
+| Area | ISO 25268 | ISO 26253 |
+| --- | --- | --- |
+| Main focus | Safe pharmaceutical delivery service | Centralized control and fleet operations |
+| Physical workflow | Major focus | Supporting focus |
+| Medication packaging | Included | Not the primary emphasis |
+| Secure delivery chambers | Included | Monitored or managed operationally |
+| Elevators and delivery locations | Included | May support coordination |
+| Emergency stopping | Included | Failure response and centralized action |
+| Real time monitoring | Limited operational context | Core focus |
+| Scheduling and task allocation | Not the primary focus | Core focus |
+| Recordkeeping | Operationally relevant | Explicit focus |
+| Current status | Draft International Standard, enquiry phase | Committee Draft, comment period closed |
+
+*Comparison based on publicly available ISO abstracts and lifecycle data, July 28, 2026.*
+
+The cleanest way to hold the distinction: ISO 25268 describes the delivery. ISO 26253 describes the system that runs the deliveries.
+
+## 5. Why hospital operations leaders should care now
+
+It would be easy to file these drafts under robotics engineering and move on. That would be a mistake, because almost nothing in either document is engineering work.
+
+Look at who actually owns the items on those lists. Emergency stop procedures belong to safety and nursing. Elevator integration belongs to facilities. Connectivity and dead zones belong to IT. Chain of custody belongs to pharmacy. Failure response belongs to operations. Recordkeeping and export rights belong to risk, legal, and compliance. Capability changes after a software update belong to clinical engineering. Vendor accountability belongs to procurement and vendor management.
+
+In the health system conversations behind this article, that cross functional pattern showed up consistently. One innovation leader described technology sponsorship as depending on whether the system in question is operational, technical, or clinical, and noted that multiple stakeholders and committees are typically involved before anything moves. The value case, in that leader's framing, was financial, safety related, and governance related at the same time. A second leader, from a different system, emphasized patient safety, tightly controlled pilots, close vendor and hospital collaboration, continuous monitoring, and human oversight as the conditions under which autonomy earns expansion.
+
+Neither of those is a robotics answer. Both are operating model answers.
+
+### The larger message in the two drafts
+
+Read together, ISO 25268 and ISO 26253 describe a progression that most hospitals will live through whether or not the standards are ever published.
+
+One robot performing deliveries is a technology implementation. A fleet of robots receiving tasks, moving through elevators, carrying medications, reacting to failures, and producing institutional records is an operating system.
+
+The gap between those two sentences is where deployments succeed or quietly stall.
+
+## 6. What the drafts could mean for a real deployment
+
+Seven categories, each with the operational decisions a hospital will need to make regardless of what the final documents say.
+
+### 6.1 Pharmacy workflow and chain of custody
+
+- Pickup authorization, meaning who can load the robot and how that is recorded
+- Payload verification against the task
+- Secure compartment behavior in transit
+- Recipient authentication at the destination
+- Delivery confirmation
+- Failed delivery handling
+- Medication return procedures
+- Controlled substance considerations
+- Record retention for each of the above
+
+Hospitals should resolve these as operational policy questions. Where a specific legal or regulatory requirement applies, cite the applicable rule rather than assuming an ISO draft creates one.
+
+### 6.2 Facilities and the physical environment
+
+- Elevator integration, including behavior when the elevator is in use
+- Automatic door integration
+- Corridor width and predictable congestion points
+- Charging areas and their power requirements
+- Designated waiting zones that do not block traffic
+- Fire door behavior
+- Construction detours and temporary route changes
+- Wireless dead zones, which every hospital has and few have mapped
+- Infection control areas and restricted entry
+- Emergency traffic priority
+
+### 6.3 Centralized monitoring and operational visibility
+
+An operations view should be able to show, for every robot, at any hour:
+
+- Robot identity
+- Current location
+- Battery status
+- Current task
+- Cargo category
+- Destination
+- Delivery priority
+- Delay status
+- Connectivity status
+- Active alerts
+- Responsible human supervisor
+- Last completed action
+
+Any competent fleet vendor can produce this view for its own robots. The harder requirement, and the one that arrives with the second vendor, is whether the view stays coherent across fleets.
+
+### 6.4 Task allocation and prioritization
+
+A control system that treats every request identically will fail its first bad night. At minimum, the system needs to distinguish:
+
+- Routine scheduled refill
+- Urgent medication delivery
+- Stat delivery
+- Retry of a previously failed delivery
+- Requests generated during an emergency event
+- Restricted unit requests
+- After hours workflows with reduced staffing
+
+Consider what should happen when a stat delivery to the ICU and a routine cabinet refill request the same elevator during a code. Somebody has to have decided that in advance, and the decision should belong to the hospital.
+
+### 6.5 Failure and downtime response
+
+Plan for the specific failures, not for failure in the abstract:
+
+- Robot stops in front of an elevator
+- Elevator integration fails
+- Compartment will not unlock
+- Wrong destination is selected
+- Robot loses network connection
+- Battery falls below the safe return threshold
+- Route becomes blocked
+- Hospital declares an emergency
+- Central control itself becomes unavailable
+
+For each one, the hospital needs a defined path through detection, containment, human notification, recovery, payload disposition, documentation, and post incident review. Payload disposition is the item most often missing, and it is the first thing pharmacy will ask about.
+
+### 6.6 Human oversight and escalation
+
+Define, in writing, before go live:
+
+- Which activities proceed automatically
+- Which require human approval
+- Who is permitted to intervene, and from where
+- Who receives escalations, by shift
+- What frontline staff can see without logging into a vendor portal
+- How staff communicate with the control team in the moment
+- Under what conditions the system must default to a safe stop
+
+Live human oversight was among the strongest recommendations to come out of the health system interviews behind this article. It was framed not as a limit on autonomy, but as the precondition for expanding it.
+
+### 6.7 Records and accountability
+
+A defensible record for a single delivery includes:
+
+- Who requested the task
+- Which robot accepted it
+- What that robot was authorized to carry
+- Pickup and delivery timestamps
+- Route and location history
+- Compartment access events
+- Human approvals
+- Alerts and interventions
+- Failed attempts
+- Software and configuration version at the time of the task
+- Final disposition of the payload
+- Incident notes
+
+Then the two questions that matter more than the list: who owns these records, and can the hospital export them in full without vendor cooperation. Answer those during procurement, not during an investigation.
+
+## 7. What the standards do not clearly answer yet
+
+This section is written deliberately. The publicly available abstracts leave real questions open, and it does the reader no favors to pretend otherwise.
+
+Unresolved, based on public material:
+
+- Must the centralized control system be vendor neutral?
+- Can one control system manage AMRs from multiple manufacturers?
+- Who owns the institutional identity of a robot?
+- Who defines what each robot is allowed to do?
+- Can hospital policy override vendor defined permissions?
+- How are capability changes reviewed after a software update?
+- Which integrations are mandatory versus optional?
+- How should hospitals govern robots operating outside pharmaceutical logistics?
+- How should robot behavior respond to changing clinical or environmental context?
+- Where does vendor responsibility end and hospital responsibility begin?
+- Who holds final operational authority during an incident?
+
+To state the position plainly: the drafts strengthen the case for centralized monitoring, operational controls, failure procedures, task management, and recordkeeping. They do not, based on their public abstracts, definitively establish the need for a vendor neutral, cross platform runtime authorization layer. That remains an important question for hospitals, vendors, and standards bodies to resolve.
+
+## 8. A hospital readiness checklist
+
+Before deploying pharmacy AMRs, can your organization answer each of these?
+
+<Checklist>
+
+- Who is the executive sponsor?
+- Who is the operational owner, day to day?
+- Who monitors the robots after hours and on weekends?
+- Which medication workflows are in scope?
+- Which departments and floors are approved?
+- What payloads are prohibited?
+- How are recipients authenticated?
+- How are elevators and doors integrated, and who validated that?
+- What happens during a network outage?
+- What is the emergency stop process, and who has been trained on it?
+- Who responds to a robot failure, and within what time?
+- How are tasks prioritized during an emergency?
+- What information is recorded for every delivery?
+- Who owns the records, and can the hospital export them?
+- How are software updates reviewed before they reach the fleet?
+- How are new robot capabilities approved?
+- How are staff trained, including staff who never requested a robot?
+- How are near misses reported?
+- What pilot KPIs determine expansion?
+- Can the system support a second robot vendor later?
+
+</Checklist>
+
+If more than a few of these have no named owner, the deployment is not blocked on robotics. It is blocked on operating model.
+
+[Talk to us about a pharmacy robot readiness review](/contact)
+
+## 9. Questions to ask robotics vendors
+
+Useful in an RFP, a pilot scoping call, or a vendor evaluation checklist:
+
+<Checklist ordered title="Vendor evaluation questions">
+
+1. How is your system addressing ISO 25268 and ISO 26253 as they develop?
+2. Which of those functions does your platform support today?
+3. Which require additional hospital side integration, and at whose cost?
+4. Does the hospital receive real time operational data, or a dashboard view only?
+5. Can the hospital export complete task and incident records, in a usable format?
+6. How are emergency stops recorded, and are they distinguishable from other halts?
+7. How are elevator and door integrations validated, and how often are they retested?
+8. Can the hospital define its own task priorities?
+9. Can hospital personnel override vendor logic, and what is logged when they do?
+10. How are new capabilities introduced, and who approves them before they go live?
+11. What happens to the fleet if your cloud is unavailable?
+12. Does your control platform support third party robots?
+13. Who is accountable for an incomplete or incorrect delivery?
+14. What evidence will you produce during the pilot, and on what schedule?
+
+</Checklist>
+
+Question twelve is worth watching closely. The answer is frequently a roadmap rather than a capability, and the difference matters more in year three than in year one.
+
+## 10. What hospitals should do now
+
+1. **Map the pharmacy delivery workflow before selecting a robot.** The workflow determines the requirements. The requirements determine the vendor. Reversing that order is the most common and most expensive error.
+2. **Define operational ownership** across pharmacy, operations, IT, facilities, and safety, with names attached rather than departments.
+3. **Include the developing ISO topics in vendor evaluations and pilot plans**, as a structure for questions, not as a compliance claim.
+4. **Require centralized monitoring, documented failure procedures, human intervention paths, and exportable records** as conditions of the pilot, not as future enhancements.
+5. **Design for scale.** Treat the first deployment as the first fleet rather than as a standalone device, because the second vendor almost always arrives.
+
+Monitor the standards as they develop. Do not claim compliance with a document that has not been published, and be skeptical of anyone who does.
+
+<PerspectiveBox>
+
+ISO 25268 and ISO 26253 indicate that hospital robotics is moving from isolated devices toward managed operational systems. Safe pharmaceutical logistics requires physical safeguards, real time monitoring, failure response, task allocation, communication, and reliable records.
+
+Vareli Health is exploring the next institutional layer: how hospitals define and enforce what autonomous systems are allowed to do, across vendors, departments, locations, and changing operational conditions. Hospitals already do this for people. Clinicians are credentialed, privileged, and monitored by the institution rather than by their employer of record. No equivalent layer exists yet for the machines now moving through the same corridors.
+
+</PerspectiveBox>
+
+## Frequently asked questions
+
+### Is ISO 25268 a final standard?
+
+No. As of July 28, 2026, ISO 25268 is a Draft International Standard. ISO records show the DIS ballot with member bodies opened on May 15, 2026 for a twelve week period. Until voting closes and the document moves through final approval and publication, there is no published international standard to comply with.
+
+### Is ISO 26253 a final standard?
+
+No. ISO 26253 is at an earlier stage than ISO 25268. It is a Committee Draft, registered in May 2026, with a comment period that closed on July 10, 2026. The draft is still being worked by the committee and has not yet advanced to the enquiry stage.
+
+### What is the difference between ISO 25268 and ISO 26253?
+
+ISO 25268 is oriented toward the physical delivery service, covering medication packaging, delivery chambers, emergency halt methods, elevator sequences, and delivery locations. ISO 26253 is oriented toward the centralized control system that runs the fleet, covering real time monitoring, failure response, hardware management, communication, scheduling, task allocation, and recordkeeping. One describes the delivery. The other describes the system that operates the deliveries.
+
+### What is an autonomous mobile robot in a hospital?
+
+An autonomous mobile robot, or AMR, is a mobile platform that navigates hospital corridors without a fixed track or a human driver. In pharmacy operations it typically carries medications, refill bins for automated dispensing cabinets, urgent doses, or supplies between the central pharmacy and nursing units, often calling elevators and passing through automatic doors along the way.
+
+### Do the standards apply only to medication delivery?
+
+Both drafts are scoped to internal pharmaceutical logistics. That said, most hospitals do not run a pharmacy only fleet. The same corridors, elevators, network, and staff also support linen, meal, lab specimen, and supply robots, so the operational patterns described in these drafts tend to generalize beyond pharmacy even where the documents do not.
+
+### Do hospitals have to comply with these drafts?
+
+No. Neither document is published, and ISO standards are voluntary unless a regulator, accreditor, or contract makes them binding. The practical use of the drafts today is as a structured checklist for deployment planning and vendor evaluation, not as a compliance obligation.
+
+### What is a centralized control system for hospital robots?
+
+A centralized control system is the layer that sees and coordinates the fleet rather than an individual robot. In the ISO 26253 framing it handles real time monitoring, response to unexpected functional failures, hardware operation management, communication targets, schedule management, task allocation, and recordkeeping.
+
+### Do the standards require one control system across multiple robot vendors?
+
+Not based on the publicly available abstracts. The drafts describe the functions a centralized control system should perform. They do not, in the public material, state that the system must be vendor neutral or capable of managing robots from multiple manufacturers. Hospitals planning for more than one fleet should treat that as an open question to resolve in procurement.
+
+### What hospital departments should evaluate pharmacy robots?
+
+In practice, pharmacy, nursing operations, facilities, IT and cybersecurity, clinical or biomedical engineering, risk management, patient safety, supply chain, and procurement all have a stake. Deployments tend to stall when a single department owns the decision and the operational consequences land somewhere else.
+
+### What happens when a medication delivery robot fails?
+
+That depends entirely on what the hospital defined in advance. A complete failure procedure covers detection, containment, human notification, recovery, disposition of the payload still inside the robot, documentation, and post incident review. The payload question is the one most often left undefined, and it is the one pharmacy leaders care most about.
+
+### How should hospitals monitor autonomous delivery robots?
+
+At minimum, an operations view should show robot identity, current location, battery state, current task, cargo category, destination, priority, delay status, connectivity, active alerts, the responsible human supervisor, and the last completed action. The harder requirement is that this view stays coherent when a second vendor's fleet arrives.
+
+### What records should hospitals retain from robot deliveries?
+
+A defensible record set includes who requested the task, which robot accepted it, what that robot was authorized to carry, pickup and delivery timestamps, route and location history, compartment access events, human approvals, alerts and interventions, failed attempts, software and configuration version, final disposition, and incident notes. Hospitals should also confirm who owns those records and whether they can be exported.
+
+### How should hospitals test pharmacy robots before scaling?
+
+Run a bounded pilot on defined routes and defined payloads, with named operational ownership, agreed KPIs, and a deliberate failure exercise rather than only a happy path demonstration. Decide before the pilot starts what result would justify expansion and what result would stop it.
+
+### What questions should hospitals ask AMR vendors?
+
+Ask how the vendor is tracking ISO 25268 and ISO 26253, which functions exist today versus on a roadmap, whether the hospital receives real time operational data, whether complete task and incident records can be exported, whether hospital staff can define priorities and override vendor logic, what happens if the vendor cloud is unavailable, whether the control platform supports third party robots, and who is accountable for an incorrect or incomplete delivery.
+
+---
+
+## Sources
+
+- ISO/DIS 25268, Guidelines for hospital internal logistics services using autonomous mobile robots for the delivery of pharmaceuticals. [iso.org/standard/89695.html](https://www.iso.org/standard/89695.html)
+- ISO/CD 26253, Healthcare organization management, Smart hospitals, Guidelines for establishing a centralized control system for hospital's internal pharmaceutical logistics using autonomous mobile robots. [iso.org/standard/92986.html](https://www.iso.org/standard/92986.html)
+- ISO/TC 304, Healthcare organization management. [iso.org/committee/6131376.html](https://www.iso.org/committee/6131376.html)
+
+## Methodology note
+
+Descriptions of both documents are drawn from the abstracts and lifecycle records ISO publishes on its public standard pages, checked on July 28, 2026. Neither draft text was purchased or reproduced here, and no claim is made about clauses not visible in the public material. Operational interpretation reflects primary interviews conducted with innovation and operations leaders at four United States health systems, cited without attribution at their preference, together with the Vareli Health team's experience in surgical robotics commercial analytics and autonomous systems operations. Standards stages change. Verify current status on the ISO pages linked above before relying on any status statement in this article.

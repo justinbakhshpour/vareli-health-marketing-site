@@ -6,7 +6,7 @@ const BASE_URL = "https://varelihealth.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const insightUrls: MetadataRoute.Sitemap = insights.map((article) => ({
     url: `${BASE_URL}${insightHref(article)}`,
-    lastModified: new Date(article.date),
+    lastModified: new Date(`${article.dateModified ?? article.date}T00:00:00`),
     changeFrequency: "yearly" as const,
     priority: 0.6,
   }));

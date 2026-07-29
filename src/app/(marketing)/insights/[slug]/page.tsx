@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { insights } from "@/content/insights/index";
+import { insights, type InsightMeta } from "@/content/insights/index";
+
+const SITE_URL = "https://varelihealth.com";
+const ORG = { "@type": "Organization", name: "Vareli Health", url: SITE_URL };
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,23 +25,95 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = insights.find((a) => a.slug === slug);
   if (!article) return {};
 
+  // `seoTitle` exists for articles whose on-page headline is too long to serve
+  // as a browser/search title.
+  const title = article.seoTitle ?? article.title;
+  const url = `${SITE_URL}/insights/${slug}`;
+
   return {
-    title: article.title,
+    title,
     description: article.description,
+    ...(article.keywords && { keywords: article.keywords }),
+    alternates: { canonical: `/insights/${slug}` },
     openGraph: {
-      title: article.title,
+      type: "article",
+      title,
       description: article.description,
-      url: `https://varelihealth.com/insights/${slug}`,
+      url,
+      siteName: "Vareli Health",
+      locale: "en_US",
+      publishedTime: article.date,
+      modifiedTime: article.dateModified ?? article.date,
+      authors: [article.author?.name ?? "Vareli Health"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: article.description,
     },
   };
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+  // Parse as local midnight — a bare "YYYY-MM-DD" is read as UTC and would
+  // display the previous day in western timezones, contradicting datePublished.
+  return new Date(`${dateStr}T00:00:00`).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+}
+
+/**
+ * Article structured data, plus FAQPage for articles that carry a mirrored
+ * `faqs` list. The page is the only place schema is emitted for this route, so
+ * an article body must never include its own <script type="application/ld+json">.
+ */
+function buildJsonLd(article: InsightMeta) {
+  const url = `${SITE_URL}/insights/${article.slug}`;
+
+  const graph: Record<string, unknown>[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: article.title,
+      ...(article.seoTitle && { alternativeHeadline: article.seoTitle }),
+      description: article.description,
+      datePublished: article.date,
+      dateModified: article.dateModified ?? article.date,
+      inLanguage: "en-US",
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      author: article.author
+        ? {
+            "@type": "Person",
+            name: article.author.name,
+            ...(article.author.jobTitle && { jobTitle: article.author.jobTitle }),
+            affiliation: { "@type": "Organization", name: "Vareli Health" },
+            ...(article.author.url && { url: `${SITE_URL}${article.author.url}` }),
+          }
+        : ORG,
+      publisher: ORG,
+      articleSection: article.category,
+      ...(article.about && {
+        about: article.about.map((name) => ({ "@type": "Thing", name })),
+      }),
+      ...(article.keywords && { keywords: article.keywords.join(", ") }),
+    },
+  ];
+
+  if (article.faqs?.length) {
+    graph.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: article.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    });
+  }
+
+  return graph;
 }
 
 export default async function InsightArticlePage({ params }: Props) {
@@ -54,8 +129,17 @@ export default async function InsightArticlePage({ params }: Props) {
     notFound();
   }
 
+  const lastUpdated = article.dateModified ?? article.date;
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildJsonLd(article)).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <div id="main-content" className="pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-[1200px]">
           {/* Back link */}
@@ -96,6 +180,32 @@ export default async function InsightArticlePage({ params }: Props) {
             <h1 className="text-[30px] sm:text-[38px] font-extrabold text-zinc-900 leading-[1.12] tracking-[-0.025em]">
               {article.title}
             </h1>
+
+            {article.author && (
+              <div className="mt-6 space-y-1 text-[13px] leading-relaxed text-zinc-500">
+                <p>
+                  By{" "}
+                  {article.author.url ? (
+                    <Link
+                      href={article.author.url}
+                      className="font-semibold text-zinc-900 hover:text-[#0F6674] transition-colors duration-150"
+                    >
+                      {article.author.name}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold text-zinc-900">
+                      {article.author.name}
+                    </span>
+                  )}
+                  {article.author.jobTitle && `, ${article.author.jobTitle}`}
+                  , Vareli Health
+                </p>
+                {lastUpdated !== article.date && (
+                  <p>Last updated {formatDate(lastUpdated)}</p>
+                )}
+                {article.reviewedBy && <p>Reviewed by: {article.reviewedBy}</p>}
+              </div>
+            )}
           </div>
 
           {/* Article body */}

@@ -2,7 +2,9 @@ import Link from "next/link";
 import { insights, insightHref } from "@/content/insights/index";
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+  // Parse as local midnight — a bare "YYYY-MM-DD" is read as UTC and would
+  // display the previous day in western timezones, contradicting datePublished.
+  return new Date(`${dateStr}T00:00:00`).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
